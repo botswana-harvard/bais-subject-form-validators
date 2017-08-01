@@ -11,3 +11,9 @@ class Section5FormValidator(FormValidator):
             field='tb_information_source',
             field_required='tb_information_source_other',
         )
+
+        self.required_if(
+            OTHER,
+            field='tb_prevention',
+            field_required='tb_prevention_other',
+        )
