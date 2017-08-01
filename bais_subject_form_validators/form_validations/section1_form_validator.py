@@ -42,22 +42,19 @@ class Section1FormValidator(FormValidator):
             field_required='religion_other',
         )
 
-        self.not_required_if(
-            NEVER,
-            field='marital_status',
-            field_required='respondent_marriage_age',
-        )
+        model_fields = ['respondent_marriage_age',
+                        'respondent_married_years']
+        for fields in model_fields:
+            self.not_required_if(
+                NEVER,
+                field='marital_status',
+                field_required=fields,
+            )
 
         self.required_if(
             NO,
             field='living_with_spouse',
             field_required='spouse_visit',
-        )
-
-        self.not_required_if(
-            NEVER,
-            field='marital_status',
-            field_required='respondent_married_years',
         )
 
         return self.cleaned_data
