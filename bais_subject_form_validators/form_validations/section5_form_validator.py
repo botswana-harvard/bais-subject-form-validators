@@ -17,3 +17,9 @@ class Section5FormValidator(FormValidator):
             field='tb_prevention',
             field_required='tb_prevention_other',
         )
+
+        self.required_if(
+            OTHER,
+            field='hiv_and_aids_unborn_baby_transmission',
+            field_required='hiv_and_aids_unborn_baby_transmission_other',
+        )
