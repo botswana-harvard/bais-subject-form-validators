@@ -92,3 +92,45 @@ class TestSection2FormValidator(TestCase):
         self.assertIn('substance_frequency_tobacco',
                       form_validator._errors)
         self.assertIn(REQUIRED_ERROR, form_validator._error_codes)
+
+    def test_substance_method_marijuana(self):
+        options = {
+            'taken_marijuana': YES,
+            'substance_method_marijuana': None}
+        form_validator = Section2FormValidator(cleaned_data=options)
+        try:
+            form_validator.validate()
+        except forms.ValidationError:
+            pass
+        self.assertIn('substance_method_marijuana',
+                      form_validator._errors)
+        self.assertIn(REQUIRED_ERROR, form_validator._error_codes)
+
+    def test_substance_age_marijuana(self):
+        options = {
+            'taken_marijuana': YES,
+            'substance_method_marijuana': 'Smoking',
+            'substance_age_marijuana': None}
+        form_validator = Section2FormValidator(cleaned_data=options)
+        try:
+            form_validator.validate()
+        except forms.ValidationError:
+            pass
+        self.assertIn('substance_age_marijuana',
+                      form_validator._errors)
+        self.assertIn(REQUIRED_ERROR, form_validator._error_codes)
+
+    def test_substance_frequency_marijuanaa(self):
+        options = {
+            'taken_marijuana': YES,
+            'substance_method_marijuana': 'Smoking',
+            'substance_age_marijuana': 18,
+            'substance_frequency_marijuana': None}
+        form_validator = Section2FormValidator(cleaned_data=options)
+        try:
+            form_validator.validate()
+        except forms.ValidationError:
+            pass
+        self.assertIn('substance_frequency_marijuana',
+                      form_validator._errors)
+        self.assertIn(REQUIRED_ERROR, form_validator._error_codes)
