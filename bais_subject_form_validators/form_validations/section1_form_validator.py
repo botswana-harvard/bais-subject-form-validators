@@ -12,22 +12,19 @@ class Section1FormValidator(FormValidator):
             field_required='respondent_employment_other',
         )
 
-        self.required_if(
-            YES,
-            field='mine',
-            field_required='mine_period'
-        )
+        req_fields = ['mine_period',
+                      'commodity']
+        for req_field in req_fields:
+            self.required_if(
+                YES,
+                field='mine',
+                field_required=req_field
+            )
 
         self.required_if(
             OTHER,
             field='mine_occupation',
             field_required='mine_occupation_other',
-        )
-
-        self.required_if(
-            YES,
-            field='mine',
-            field_required='commodity'
         )
 
         self.required_if(
