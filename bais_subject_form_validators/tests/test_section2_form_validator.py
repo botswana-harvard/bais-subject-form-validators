@@ -218,3 +218,45 @@ class TestSection2FormValidator(TestCase):
         self.assertIn('substance_frequency_crack',
                       form_validator._errors)
         self.assertIn(REQUIRED_ERROR, form_validator._error_codes)
+
+    def test_substance_method_meth(self):
+        options = {
+            'taken_meth': YES,
+            'substance_method_meth': None}
+        form_validator = Section2FormValidator(cleaned_data=options)
+        try:
+            form_validator.validate()
+        except forms.ValidationError:
+            pass
+        self.assertIn('substance_method_meth',
+                      form_validator._errors)
+        self.assertIn(REQUIRED_ERROR, form_validator._error_codes)
+
+    def test_substance_age_meth(self):
+        options = {
+            'taken_meth': YES,
+            'substance_method_meth': 'Injection',
+            'substance_age_meth': None}
+        form_validator = Section2FormValidator(cleaned_data=options)
+        try:
+            form_validator.validate()
+        except forms.ValidationError:
+            pass
+        self.assertIn('substance_age_meth',
+                      form_validator._errors)
+        self.assertIn(REQUIRED_ERROR, form_validator._error_codes)
+
+    def test_substance_frequency_meth(self):
+        options = {
+            'taken_meth': YES,
+            'substance_method_meth': 'Injection',
+            'substance_age_meth': 10,
+            'substance_frequency_meth': None}
+        form_validator = Section2FormValidator(cleaned_data=options)
+        try:
+            form_validator.validate()
+        except forms.ValidationError:
+            pass
+        self.assertIn('substance_frequency_meth',
+                      form_validator._errors)
+        self.assertIn(REQUIRED_ERROR, form_validator._error_codes)
