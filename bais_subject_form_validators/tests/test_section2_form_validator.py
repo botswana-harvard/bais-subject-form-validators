@@ -134,3 +134,87 @@ class TestSection2FormValidator(TestCase):
         self.assertIn('substance_frequency_marijuana',
                       form_validator._errors)
         self.assertIn(REQUIRED_ERROR, form_validator._error_codes)
+
+    def test_substance_method_cocaine(self):
+        options = {
+            'taken_cocaine': YES,
+            'substance_method_cocaine': None}
+        form_validator = Section2FormValidator(cleaned_data=options)
+        try:
+            form_validator.validate()
+        except forms.ValidationError:
+            pass
+        self.assertIn('substance_method_cocaine',
+                      form_validator._errors)
+        self.assertIn(REQUIRED_ERROR, form_validator._error_codes)
+
+    def test_substance_age_cocaine(self):
+        options = {
+            'taken_cocaine': YES,
+            'substance_method_cocaine': 'Snort',
+            'substance_age_cocaine': None}
+        form_validator = Section2FormValidator(cleaned_data=options)
+        try:
+            form_validator.validate()
+        except forms.ValidationError:
+            pass
+        self.assertIn('substance_age_cocaine',
+                      form_validator._errors)
+        self.assertIn(REQUIRED_ERROR, form_validator._error_codes)
+
+    def test_substance_frequency_cocaine(self):
+        options = {
+            'taken_cocaine': YES,
+            'substance_method_cocaine': 'Snort',
+            'substance_age_cocaine': 21,
+            'substance_frequency_cocaine': None}
+        form_validator = Section2FormValidator(cleaned_data=options)
+        try:
+            form_validator.validate()
+        except forms.ValidationError:
+            pass
+        self.assertIn('substance_frequency_cocaine',
+                      form_validator._errors)
+        self.assertIn(REQUIRED_ERROR, form_validator._error_codes)
+
+    def test_substance_method_crack(self):
+        options = {
+            'taken_crack': YES,
+            'substance_method_crack': None}
+        form_validator = Section2FormValidator(cleaned_data=options)
+        try:
+            form_validator.validate()
+        except forms.ValidationError:
+            pass
+        self.assertIn('substance_method_crack',
+                      form_validator._errors)
+        self.assertIn(REQUIRED_ERROR, form_validator._error_codes)
+
+    def test_substance_age_crack(self):
+        options = {
+            'taken_crack': YES,
+            'substance_method_crack': 'Injection',
+            'substance_age_crack': None}
+        form_validator = Section2FormValidator(cleaned_data=options)
+        try:
+            form_validator.validate()
+        except forms.ValidationError:
+            pass
+        self.assertIn('substance_age_crack',
+                      form_validator._errors)
+        self.assertIn(REQUIRED_ERROR, form_validator._error_codes)
+
+    def test_substance_frequency_crack(self):
+        options = {
+            'taken_crack': YES,
+            'substance_method_crack': 'Injection',
+            'substance_age_crack': 30,
+            'substance_frequency_crack': None}
+        form_validator = Section2FormValidator(cleaned_data=options)
+        try:
+            form_validator.validate()
+        except forms.ValidationError:
+            pass
+        self.assertIn('substance_frequency_crack',
+                      form_validator._errors)
+        self.assertIn(REQUIRED_ERROR, form_validator._error_codes)
