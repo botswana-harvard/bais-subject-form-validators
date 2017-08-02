@@ -344,3 +344,45 @@ class TestSection2FormValidator(TestCase):
         self.assertIn('substance_frequency_heroine',
                       form_validator._errors)
         self.assertIn(REQUIRED_ERROR, form_validator._error_codes)
+
+    def test_substance_method_ecstasy(self):
+        options = {
+            'taken_ecstasy': YES,
+            'substance_method_ecstasy': None}
+        form_validator = Section2FormValidator(cleaned_data=options)
+        try:
+            form_validator.validate()
+        except forms.ValidationError:
+            pass
+        self.assertIn('substance_method_ecstasy',
+                      form_validator._errors)
+        self.assertIn(REQUIRED_ERROR, form_validator._error_codes)
+
+    def test_substance_age_ecstasy(self):
+        options = {
+            'taken_ecstasy': YES,
+            'substance_method_ecstasy': 'Swallow',
+            'substance_age_ecstasy': None}
+        form_validator = Section2FormValidator(cleaned_data=options)
+        try:
+            form_validator.validate()
+        except forms.ValidationError:
+            pass
+        self.assertIn('substance_age_ecstasy',
+                      form_validator._errors)
+        self.assertIn(REQUIRED_ERROR, form_validator._error_codes)
+
+    def test_substance_frequency_ecstasy(self):
+        options = {
+            'taken_ecstasy': YES,
+            'substance_method_ecstasy': 'Swallow',
+            'substance_age_ecstasy': 16,
+            'substance_frequency_ecstasy': None}
+        form_validator = Section2FormValidator(cleaned_data=options)
+        try:
+            form_validator.validate()
+        except forms.ValidationError:
+            pass
+        self.assertIn('substance_frequency_ecstasy',
+                      form_validator._errors)
+        self.assertIn(REQUIRED_ERROR, form_validator._error_codes)
