@@ -1,5 +1,5 @@
 from django import forms
-from django.test import TestCase
+from django.test import TestCase, tag
 
 from edc_constants.constants import YES
 from edc_base.modelform_validators import REQUIRED_ERROR
@@ -258,5 +258,89 @@ class TestSection2FormValidator(TestCase):
         except forms.ValidationError:
             pass
         self.assertIn('substance_frequency_meth',
+                      form_validator._errors)
+        self.assertIn(REQUIRED_ERROR, form_validator._error_codes)
+
+    def test_substance_method_nyaope(self):
+        options = {
+            'taken_nyaope': YES,
+            'substance_method_nyaope': None}
+        form_validator = Section2FormValidator(cleaned_data=options)
+        try:
+            form_validator.validate()
+        except forms.ValidationError:
+            pass
+        self.assertIn('substance_method_nyaope',
+                      form_validator._errors)
+        self.assertIn(REQUIRED_ERROR, form_validator._error_codes)
+
+    def test_substance_age_nyaope(self):
+        options = {
+            'taken_nyaope': YES,
+            'substance_method_nyaope': 'Smoking',
+            'substance_age_nyaope': None}
+        form_validator = Section2FormValidator(cleaned_data=options)
+        try:
+            form_validator.validate()
+        except forms.ValidationError:
+            pass
+        self.assertIn('substance_age_nyaope',
+                      form_validator._errors)
+        self.assertIn(REQUIRED_ERROR, form_validator._error_codes)
+
+    def test_substance_frequency_nyaope(self):
+        options = {
+            'taken_nyaope': YES,
+            'substance_method_nyaope': 'Smoking',
+            'substance_age_nyaope': 18,
+            'substance_frequency_nyaope': None}
+        form_validator = Section2FormValidator(cleaned_data=options)
+        try:
+            form_validator.validate()
+        except forms.ValidationError:
+            pass
+        self.assertIn('substance_frequency_nyaope',
+                      form_validator._errors)
+        self.assertIn(REQUIRED_ERROR, form_validator._error_codes)
+
+    def test_substance_method_heroine(self):
+        options = {
+            'taken_heroine': YES,
+            'substance_method_heroine': None}
+        form_validator = Section2FormValidator(cleaned_data=options)
+        try:
+            form_validator.validate()
+        except forms.ValidationError:
+            pass
+        self.assertIn('substance_method_heroine',
+                      form_validator._errors)
+        self.assertIn(REQUIRED_ERROR, form_validator._error_codes)
+
+    def test_substance_age_heroine(self):
+        options = {
+            'taken_heroine': YES,
+            'substance_method_heroine': 'Injection',
+            'substance_age_heroine': None}
+        form_validator = Section2FormValidator(cleaned_data=options)
+        try:
+            form_validator.validate()
+        except forms.ValidationError:
+            pass
+        self.assertIn('substance_age_heroine',
+                      form_validator._errors)
+        self.assertIn(REQUIRED_ERROR, form_validator._error_codes)
+
+    def test_substance_frequency_heroine(self):
+        options = {
+            'taken_heroine': YES,
+            'substance_method_heroine': 'Injection',
+            'substance_age_heroine': 12,
+            'substance_frequency_heroine': None}
+        form_validator = Section2FormValidator(cleaned_data=options)
+        try:
+            form_validator.validate()
+        except forms.ValidationError:
+            pass
+        self.assertIn('substance_frequency_heroine',
                       form_validator._errors)
         self.assertIn(REQUIRED_ERROR, form_validator._error_codes)
