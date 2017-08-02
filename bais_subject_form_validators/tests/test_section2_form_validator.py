@@ -386,3 +386,45 @@ class TestSection2FormValidator(TestCase):
         self.assertIn('substance_frequency_ecstasy',
                       form_validator._errors)
         self.assertIn(REQUIRED_ERROR, form_validator._error_codes)
+
+    def test_substance_method_codeine(self):
+        options = {
+            'taken_codeine': YES,
+            'substance_method_codeine': None}
+        form_validator = Section2FormValidator(cleaned_data=options)
+        try:
+            form_validator.validate()
+        except forms.ValidationError:
+            pass
+        self.assertIn('substance_method_codeine',
+                      form_validator._errors)
+        self.assertIn(REQUIRED_ERROR, form_validator._error_codes)
+
+    def test_substance_age_codeine(self):
+        options = {
+            'taken_codeine': YES,
+            'substance_method_codeine': 'Drinking',
+            'substance_age_codeine': None}
+        form_validator = Section2FormValidator(cleaned_data=options)
+        try:
+            form_validator.validate()
+        except forms.ValidationError:
+            pass
+        self.assertIn('substance_age_codeine',
+                      form_validator._errors)
+        self.assertIn(REQUIRED_ERROR, form_validator._error_codes)
+
+    def test_substance_frequency_codeine(self):
+        options = {
+            'taken_codeine': YES,
+            'substance_method_codeine': 'Drinking',
+            'substance_age_codeine': 16,
+            'substance_frequency_codeine': None}
+        form_validator = Section2FormValidator(cleaned_data=options)
+        try:
+            form_validator.validate()
+        except forms.ValidationError:
+            pass
+        self.assertIn('substance_frequency_codeine',
+                      form_validator._errors)
+        self.assertIn(REQUIRED_ERROR, form_validator._error_codes)
