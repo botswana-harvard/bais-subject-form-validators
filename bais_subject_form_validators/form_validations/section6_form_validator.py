@@ -11,3 +11,9 @@ class Section6FormValidator(FormValidator):
             field='aids_hiv_test_reason',
             field_required='aids_hiv_test_reason_other',
         )
+
+        self.required_if(
+            OTHER,
+            field='aids_hiv_not_tested',
+            field_required='aids_hiv_not_tested_other',
+        )
