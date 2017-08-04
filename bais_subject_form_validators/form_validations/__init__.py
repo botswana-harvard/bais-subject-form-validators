@@ -1,3 +1,4 @@
 from .section1_form_validator import Section1FormValidator
 from .section2_form_validator import Section2FormValidator
 from .section3_form_validator import Section3FormValidator
+from .section4_form_validator import Section4FormValidator
