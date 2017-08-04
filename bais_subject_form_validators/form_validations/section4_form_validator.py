@@ -2,7 +2,7 @@ from edc_base.modelform_validators import FormValidator
 from edc_constants.constants import YES, OTHER, NO
 
 
-class Section3FormValidator(FormValidator):
+class Section4FormValidator(FormValidator):
 
     def clean(self):
         req_fields = [
