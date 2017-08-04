@@ -274,3 +274,421 @@ class TestSection3FormValidator(TestCase):
         self.assertIn('partners_serial_concurrent_explain',
                       form_validator._errors)
         self.assertIn(REQUIRED_ERROR, form_validator._error_codes)
+
+    def test_condom_main_reason_partner1(self):
+        options = {
+            'sexual_intercouse': NO,
+            'condom_main_reason_partner1': 'Family planning'}
+        form_validator = Section3FormValidator(cleaned_data=options)
+        try:
+            form_validator.validate()
+        except forms.ValidationError:
+            pass
+        self.assertIn('condom_main_reason_partner1',
+                      form_validator._errors)
+        self.assertIn(NOT_REQUIRED_ERROR, form_validator._error_codes)
+
+    def test_condom_main_reason_partner2(self):
+        options = {
+            'sexual_intercouse': NO,
+            'condom_main_reason_partner1': None,
+            'condom_main_reason_partner2': 'Diseases'}
+        form_validator = Section3FormValidator(cleaned_data=options)
+        try:
+            form_validator.validate()
+        except forms.ValidationError:
+            pass
+        self.assertIn('condom_main_reason_partner2',
+                      form_validator._errors)
+        self.assertIn(NOT_REQUIRED_ERROR, form_validator._error_codes)
+
+    def test_condom_main_reason_partner3(self):
+        options = {
+            'sexual_intercouse': NO,
+            'condom_main_reason_partner1': None,
+            'condom_main_reason_partner2': None,
+            'condom_main_reason_partner3': 'Diseases'}
+        form_validator = Section3FormValidator(cleaned_data=options)
+        try:
+            form_validator.validate()
+        except forms.ValidationError:
+            pass
+        self.assertIn('condom_main_reason_partner3',
+                      form_validator._errors)
+        self.assertIn(NOT_REQUIRED_ERROR, form_validator._error_codes)
+
+    def test_condom_not_used_reason_partner1(self):
+        options = {
+            'sexual_intercouse': NO,
+            'condom_main_reason_partner1': None,
+            'condom_main_reason_partner2': None,
+            'condom_main_reason_partner3': None,
+            'condom_not_used_reason_partner1': 'Not available'}
+        form_validator = Section3FormValidator(cleaned_data=options)
+        try:
+            form_validator.validate()
+        except forms.ValidationError:
+            pass
+        self.assertIn('condom_not_used_reason_partner1',
+                      form_validator._errors)
+        self.assertIn(NOT_REQUIRED_ERROR, form_validator._error_codes)
+
+    def test_condom_not_used_reason_partner2(self):
+        options = {
+            'sexual_intercouse': NO,
+            'condom_main_reason_partner1': None,
+            'condom_main_reason_partner2': None,
+            'condom_main_reason_partner3': None,
+            'condom_not_used_reason_partner1': None,
+            'condom_not_used_reason_partner2': 'Not available'}
+        form_validator = Section3FormValidator(cleaned_data=options)
+        try:
+            form_validator.validate()
+        except forms.ValidationError:
+            pass
+        self.assertIn('condom_not_used_reason_partner2',
+                      form_validator._errors)
+        self.assertIn(NOT_REQUIRED_ERROR, form_validator._error_codes)
+
+    def test_condom_not_used_reason_partner3(self):
+        options = {
+            'sexual_intercouse': NO,
+            'condom_main_reason_partner1': None,
+            'condom_main_reason_partner2': None,
+            'condom_main_reason_partner3': None,
+            'condom_not_used_reason_partner1': None,
+            'condom_not_used_reason_partner2': None,
+            'condom_not_used_reason_partner3': 'Not available'}
+        form_validator = Section3FormValidator(cleaned_data=options)
+        try:
+            form_validator.validate()
+        except forms.ValidationError:
+            pass
+        self.assertIn('condom_not_used_reason_partner3',
+                      form_validator._errors)
+        self.assertIn(NOT_REQUIRED_ERROR, form_validator._error_codes)
+
+    def test_condom_place_partner1(self):
+        options = {
+            'sexual_intercouse': NO,
+            'condom_main_reason_partner1': None,
+            'condom_main_reason_partner2': None,
+            'condom_main_reason_partner3': None,
+            'condom_not_used_reason_partner1': None,
+            'condom_not_used_reason_partner2': None,
+            'condom_not_used_reason_partner3': None,
+            'condom_place_partner1': 'Clinic'}
+        form_validator = Section3FormValidator(cleaned_data=options)
+        try:
+            form_validator.validate()
+        except forms.ValidationError:
+            pass
+        self.assertIn('condom_place_partner1',
+                      form_validator._errors)
+        self.assertIn(NOT_REQUIRED_ERROR, form_validator._error_codes)
+
+    def test_condom_place_partner2(self):
+        options = {
+            'sexual_intercouse': NO,
+            'condom_main_reason_partner1': None,
+            'condom_main_reason_partner2': None,
+            'condom_main_reason_partner3': None,
+            'condom_not_used_reason_partner1': None,
+            'condom_not_used_reason_partner2': None,
+            'condom_not_used_reason_partner3': None,
+            'condom_place_partner1': None,
+            'condom_place_partner2': 'Clinic'}
+        form_validator = Section3FormValidator(cleaned_data=options)
+        try:
+            form_validator.validate()
+        except forms.ValidationError:
+            pass
+        self.assertIn('condom_place_partner2',
+                      form_validator._errors)
+        self.assertIn(NOT_REQUIRED_ERROR, form_validator._error_codes)
+
+    def test_condom_place_partner3(self):
+        options = {
+            'sexual_intercouse': NO,
+            'condom_main_reason_partner1': None,
+            'condom_main_reason_partner2': None,
+            'condom_main_reason_partner3': None,
+            'condom_not_used_reason_partner1': None,
+            'condom_not_used_reason_partner2': None,
+            'condom_not_used_reason_partner3': None,
+            'condom_place_partner1': None,
+            'condom_place_partner2': None,
+            'condom_place_partner3': 'Clinic'}
+        form_validator = Section3FormValidator(cleaned_data=options)
+        try:
+            form_validator.validate()
+        except forms.ValidationError:
+            pass
+        self.assertIn('condom_place_partner3',
+                      form_validator._errors)
+        self.assertIn(NOT_REQUIRED_ERROR, form_validator._error_codes)
+
+    def test_drunk_high_sex_partner1(self):
+        options = {
+            'sexual_intercouse': NO,
+            'condom_main_reason_partner1': None,
+            'condom_main_reason_partner2': None,
+            'condom_main_reason_partner3': None,
+            'condom_not_used_reason_partner1': None,
+            'condom_not_used_reason_partner2': None,
+            'condom_not_used_reason_partner3': None,
+            'condom_place_partner1': None,
+            'condom_place_partner2': None,
+            'condom_place_partner3': None,
+            'drunk_high_sex_partner1': 'YES, I WAS'}
+        form_validator = Section3FormValidator(cleaned_data=options)
+        try:
+            form_validator.validate()
+        except forms.ValidationError:
+            pass
+        self.assertIn('drunk_high_sex_partner1',
+                      form_validator._errors)
+        self.assertIn(NOT_REQUIRED_ERROR, form_validator._error_codes)
+
+    def test_drunk_high_sex_partner2(self):
+        options = {
+            'sexual_intercouse': NO,
+            'condom_main_reason_partner1': None,
+            'condom_main_reason_partner2': None,
+            'condom_main_reason_partner3': None,
+            'condom_not_used_reason_partner1': None,
+            'condom_not_used_reason_partner2': None,
+            'condom_not_used_reason_partner3': None,
+            'condom_place_partner1': None,
+            'condom_place_partner2': None,
+            'condom_place_partner3': None,
+            'drunk_high_sex_partner1': None,
+            'drunk_high_sex_partner2': 'YES, I WAS'}
+        form_validator = Section3FormValidator(cleaned_data=options)
+        try:
+            form_validator.validate()
+        except forms.ValidationError:
+            pass
+        self.assertIn('drunk_high_sex_partner2',
+                      form_validator._errors)
+        self.assertIn(NOT_REQUIRED_ERROR, form_validator._error_codes)
+
+    def test_drunk_high_sex_partner3(self):
+        options = {
+            'sexual_intercouse': NO,
+            'condom_main_reason_partner1': None,
+            'condom_main_reason_partner2': None,
+            'condom_main_reason_partner3': None,
+            'condom_not_used_reason_partner1': None,
+            'condom_not_used_reason_partner2': None,
+            'condom_not_used_reason_partner3': None,
+            'condom_place_partner1': None,
+            'condom_place_partner2': None,
+            'condom_place_partner3': None,
+            'drunk_high_sex_partner1': None,
+            'drunk_high_sex_partner2': None,
+            'drunk_high_sex_partner3': 'YES, I WAS'}
+        form_validator = Section3FormValidator(cleaned_data=options)
+        try:
+            form_validator.validate()
+        except forms.ValidationError:
+            pass
+        self.assertIn('drunk_high_sex_partner3',
+                      form_validator._errors)
+        self.assertIn(NOT_REQUIRED_ERROR, form_validator._error_codes)
+
+    def test_partner_other_partners_partner1(self):
+        options = {
+            'sexual_intercouse': NO,
+            'condom_main_reason_partner1': None,
+            'condom_main_reason_partner2': None,
+            'condom_main_reason_partner3': None,
+            'condom_not_used_reason_partner1': None,
+            'condom_not_used_reason_partner2': None,
+            'condom_not_used_reason_partner3': None,
+            'condom_place_partner1': None,
+            'condom_place_partner2': None,
+            'condom_place_partner3': None,
+            'drunk_high_sex_partner1': None,
+            'drunk_high_sex_partner2': None,
+            'drunk_high_sex_partner3': None,
+            'partner_other_partners_partner1': NO}
+        form_validator = Section3FormValidator(cleaned_data=options)
+        try:
+            form_validator.validate()
+        except forms.ValidationError:
+            pass
+        self.assertIn('partner_other_partners_partner1',
+                      form_validator._errors)
+        self.assertIn(NOT_REQUIRED_ERROR, form_validator._error_codes)
+
+    def test_partner_other_partners_partner2(self):
+        options = {
+            'sexual_intercouse': NO,
+            'condom_main_reason_partner1': None,
+            'condom_main_reason_partner2': None,
+            'condom_main_reason_partner3': None,
+            'condom_not_used_reason_partner1': None,
+            'condom_not_used_reason_partner2': None,
+            'condom_not_used_reason_partner3': None,
+            'condom_place_partner1': None,
+            'condom_place_partner2': None,
+            'condom_place_partner3': None,
+            'drunk_high_sex_partner1': None,
+            'drunk_high_sex_partner2': None,
+            'drunk_high_sex_partner3': None,
+            'partner_other_partners_partner1': None,
+            'partner_other_partners_partner2': YES}
+        form_validator = Section3FormValidator(cleaned_data=options)
+        try:
+            form_validator.validate()
+        except forms.ValidationError:
+            pass
+        self.assertIn('partner_other_partners_partner2',
+                      form_validator._errors)
+        self.assertIn(NOT_REQUIRED_ERROR, form_validator._error_codes)
+
+    def test_partner_other_partners_partner3(self):
+        options = {
+            'sexual_intercouse': NO,
+            'condom_main_reason_partner1': None,
+            'condom_main_reason_partner2': None,
+            'condom_main_reason_partner3': None,
+            'condom_not_used_reason_partner1': None,
+            'condom_not_used_reason_partner2': None,
+            'condom_not_used_reason_partner3': None,
+            'condom_place_partner1': None,
+            'condom_place_partner2': None,
+            'condom_place_partner3': None,
+            'drunk_high_sex_partner1': None,
+            'drunk_high_sex_partner2': None,
+            'drunk_high_sex_partner3': None,
+            'partner_other_partners_partner1': None,
+            'partner_other_partners_partner2': None,
+            'partner_other_partners_partner3': DONT_KNOW}
+        form_validator = Section3FormValidator(cleaned_data=options)
+        try:
+            form_validator.validate()
+        except forms.ValidationError:
+            pass
+        self.assertIn('partner_other_partners_partner3',
+                      form_validator._errors)
+        self.assertIn(NOT_REQUIRED_ERROR, form_validator._error_codes)
+
+    def test_sexual_partner_recent1(self):
+        options = {
+            'sexual_intercouse': NO,
+            'condom_main_reason_partner1': None,
+            'condom_main_reason_partner2': None,
+            'condom_main_reason_partner3': None,
+            'condom_not_used_reason_partner1': None,
+            'condom_not_used_reason_partner2': None,
+            'condom_not_used_reason_partner3': None,
+            'condom_place_partner1': None,
+            'condom_place_partner2': None,
+            'condom_place_partner3': None,
+            'drunk_high_sex_partner1': None,
+            'drunk_high_sex_partner2': None,
+            'drunk_high_sex_partner3': None,
+            'partner_other_partners_partner1': None,
+            'partner_other_partners_partner2': None,
+            'partner_other_partners_partner3': None,
+            'sexual_partner_recent1': NO}
+        form_validator = Section3FormValidator(cleaned_data=options)
+        try:
+            form_validator.validate()
+        except forms.ValidationError:
+            pass
+        self.assertIn('sexual_partner_recent1',
+                      form_validator._errors)
+        self.assertIn(NOT_REQUIRED_ERROR, form_validator._error_codes)
+
+    def test_sexual_partner_recent2(self):
+        options = {
+            'sexual_intercouse': NO,
+            'condom_main_reason_partner1': None,
+            'condom_main_reason_partner2': None,
+            'condom_main_reason_partner3': None,
+            'condom_not_used_reason_partner1': None,
+            'condom_not_used_reason_partner2': None,
+            'condom_not_used_reason_partner3': None,
+            'condom_place_partner1': None,
+            'condom_place_partner2': None,
+            'condom_place_partner3': None,
+            'drunk_high_sex_partner1': None,
+            'drunk_high_sex_partner2': None,
+            'drunk_high_sex_partner3': None,
+            'partner_other_partners_partner1': None,
+            'partner_other_partners_partner2': None,
+            'partner_other_partners_partner3': None,
+            'sexual_partner_recent1': None,
+            'sexual_partner_recent2': NO}
+        form_validator = Section3FormValidator(cleaned_data=options)
+        try:
+            form_validator.validate()
+        except forms.ValidationError:
+            pass
+        self.assertIn('sexual_partner_recent2',
+                      form_validator._errors)
+        self.assertIn(NOT_REQUIRED_ERROR, form_validator._error_codes)
+
+    def test_sexual_partner_recent3(self):
+        options = {
+            'sexual_intercouse': NO,
+            'condom_main_reason_partner1': None,
+            'condom_main_reason_partner2': None,
+            'condom_main_reason_partner3': None,
+            'condom_not_used_reason_partner1': None,
+            'condom_not_used_reason_partner2': None,
+            'condom_not_used_reason_partner3': None,
+            'condom_place_partner1': None,
+            'condom_place_partner2': None,
+            'condom_place_partner3': None,
+            'drunk_high_sex_partner1': None,
+            'drunk_high_sex_partner2': None,
+            'drunk_high_sex_partner3': None,
+            'partner_other_partners_partner1': None,
+            'partner_other_partners_partner2': None,
+            'partner_other_partners_partner3': None,
+            'sexual_partner_recent1': None,
+            'sexual_partner_recent2': None,
+            'sexual_partner_recent3': YES}
+        form_validator = Section3FormValidator(cleaned_data=options)
+        try:
+            form_validator.validate()
+        except forms.ValidationError:
+            pass
+        self.assertIn('sexual_partner_recent3',
+                      form_validator._errors)
+        self.assertIn(NOT_REQUIRED_ERROR, form_validator._error_codes)
+
+    def test_paid_for_sex(self):
+        options = {
+            'sexual_intercouse': NO,
+            'condom_main_reason_partner1': None,
+            'condom_main_reason_partner2': None,
+            'condom_main_reason_partner3': None,
+            'condom_not_used_reason_partner1': None,
+            'condom_not_used_reason_partner2': None,
+            'condom_not_used_reason_partner3': None,
+            'condom_place_partner1': None,
+            'condom_place_partner2': None,
+            'condom_place_partner3': None,
+            'drunk_high_sex_partner1': None,
+            'drunk_high_sex_partner2': None,
+            'drunk_high_sex_partner3': None,
+            'partner_other_partners_partner1': None,
+            'partner_other_partners_partner2': None,
+            'partner_other_partners_partner3': None,
+            'sexual_partner_recent1': None,
+            'sexual_partner_recent2': None,
+            'sexual_partner_recent3': None,
+            'paid_for_sex': NO}
+        form_validator = Section3FormValidator(cleaned_data=options)
+        try:
+            form_validator.validate()
+        except forms.ValidationError:
+            pass
+        self.assertIn('paid_for_sex',
+                      form_validator._errors)
+        self.assertIn(NOT_REQUIRED_ERROR, form_validator._error_codes)
