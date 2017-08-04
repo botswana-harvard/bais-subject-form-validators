@@ -23,3 +23,9 @@ class Section6FormValidator(FormValidator):
             field='current_arv_supplier',
             field_required='current_arv_supplier_other',
         )
+
+        self.required_if(
+            OTHER,
+            field='not_on_arv_therapy',
+            field_required='not_on_arv_therapy_other',
+        )
