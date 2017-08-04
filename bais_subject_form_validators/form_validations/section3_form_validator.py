@@ -119,7 +119,7 @@ class Section3FormValidator(FormValidator):
             'sexual_partner_recent1',
             'sexual_partner_recent2',
             'sexual_partner_recent3',
-            'paid_for_sexgit'
+            'paid_for_sex'
         ]
         for not_req_field in not_req_fields:
             self.not_required_if(
