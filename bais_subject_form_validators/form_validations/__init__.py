@@ -4,5 +4,7 @@ from .section3_form_validator import Section3FormValidator
 from .section4_form_validator import Section4FormValidator
 from .section5_form_validator import Section5FormValidator
 from .section6_form_validator import Section6FormValidator
+from .section7_form_validator import Section7FormValidator
+from .section8_form_validator import Section8FormValidator
 from .household_questionnaire_form_validator import (
     HouseholdQuestionnaireFormValidator)
