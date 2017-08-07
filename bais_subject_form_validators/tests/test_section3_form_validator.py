@@ -1,5 +1,5 @@
 from django import forms
-from django.test import TestCase, tag
+from django.test import TestCase
 
 from edc_constants.constants import YES, OTHER, NO, DONT_KNOW
 from edc_base.modelform_validators import (
