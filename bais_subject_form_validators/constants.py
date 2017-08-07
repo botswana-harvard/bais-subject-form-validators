@@ -1,1 +1,2 @@
-CONCURRENT = 'Concurrent'
+CONCURRENT = 'Concurrent',
+YES_LEFT = 'Yes, left'
