@@ -8,7 +8,7 @@ from edc_base.modelform_validators import (REQUIRED_ERROR,
 from ..form_validations import Section5FormValidator
 
 
-class TestSection1FormValidator(TestCase):
+class TestSection5FormValidator(TestCase):
 
     def test_tb_information_source_other1(self):
         options = {
