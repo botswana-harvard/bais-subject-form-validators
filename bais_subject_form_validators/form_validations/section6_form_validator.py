@@ -29,3 +29,11 @@ class Section6FormValidator(FormValidator):
             field='not_on_arv_therapy',
             field_required='not_on_arv_therapy_other',
         )
+
+        self.required_if(
+            OTHER,
+            field='tb_reaction',
+            field_required='tb_reaction_other',
+        )
+
+        return self.cleaned_data
