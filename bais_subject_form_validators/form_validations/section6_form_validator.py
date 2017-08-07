@@ -1,5 +1,5 @@
 from edc_base.modelform_validators import FormValidator
-from edc_constants.constants import OTHER, YES, NEVER, NO
+from edc_constants.constants import OTHER
 
 
 class Section6FormValidator(FormValidator):
