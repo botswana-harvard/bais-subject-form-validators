@@ -88,3 +88,55 @@ class TestSection6FormValidator(TestCase):
         self.assertIn('current_arv_supplier_other',
                       form_validator._errors)
         self.assertIn(NOT_REQUIRED_ERROR, form_validator._error_codes)
+
+    def test_not_on_arv_therapy_other1(self):
+        options = {
+            'not_on_arv_therapy': OTHER,
+            'not_on_arv_therapy_other': None}
+        form_validator = Section6FormValidator(cleaned_data=options)
+        try:
+            form_validator.validate()
+        except forms.ValidationError:
+            pass
+        self.assertIn('not_on_arv_therapy_other',
+                      form_validator._errors)
+        self.assertIn(REQUIRED_ERROR, form_validator._error_codes)
+
+    def test_not_on_arv_therapy_other2(self):
+        options = {
+            'not_on_arv_therapy': 'Value',
+            'not_on_arv_therapy_other': 'allergies'}
+        form_validator = Section6FormValidator(cleaned_data=options)
+        try:
+            form_validator.validate()
+        except forms.ValidationError:
+            pass
+        self.assertIn('not_on_arv_therapy_other',
+                      form_validator._errors)
+        self.assertIn(NOT_REQUIRED_ERROR, form_validator._error_codes)
+
+    def test_tb_reaction_other1(self):
+        options = {
+            'tb_reaction': OTHER,
+            'tb_reaction_other': None}
+        form_validator = Section6FormValidator(cleaned_data=options)
+        try:
+            form_validator.validate()
+        except forms.ValidationError:
+            pass
+        self.assertIn('tb_reaction_other',
+                      form_validator._errors)
+        self.assertIn(REQUIRED_ERROR, form_validator._error_codes)
+
+    def test_tb_reaction_other2(self):
+        options = {
+            'tb_reaction': 'Value',
+            'tb_reaction_other': 'Scared'}
+        form_validator = Section6FormValidator(cleaned_data=options)
+        try:
+            form_validator.validate()
+        except forms.ValidationError:
+            pass
+        self.assertIn('tb_reaction_other',
+                      form_validator._errors)
+        self.assertIn(NOT_REQUIRED_ERROR, form_validator._error_codes)
