@@ -52,8 +52,8 @@ class TestSection7FormValidator(TestCase):
 
     def test_ante_natal_clinic_test_other2(self):
         options = {
-            'ante_natal_clinic_none': 'Value',
-            'ante_natal_clinic_none_other': 'confidential'}
+            'ante_natal_clinic_test': 'Value',
+            'ante_natal_clinic_test_other': 'confidential'}
         form_validator = Section7FormValidator(cleaned_data=options)
         try:
             form_validator.validate()
