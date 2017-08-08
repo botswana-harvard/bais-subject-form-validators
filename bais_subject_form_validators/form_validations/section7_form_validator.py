@@ -12,12 +12,12 @@ class Section7FormValidator(FormValidator):
             field_required='ante_natal_clinic_none_other',
         )
 
-#         self.required_if(
-#             OTHER,
-#             field='tb_prevention',
-#             field_required='tb_prevention_other',
-#         )
-#
+        self.required_if(
+            OTHER,
+            field='ante_natal_clinic_test',
+            field_required='ante_natal_clinic_test_other',
+        )
+
 #         self.required_if(
 #             OTHER,
 #             field='hiv_and_aids_unborn_baby_transmission',
