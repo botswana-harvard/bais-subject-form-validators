@@ -8,6 +8,26 @@ class Section8FormValidator(FormValidator):
 
         self.required_if(
             OTHER,
-            field='aids_hiv_test_reason',
-            field_required='aids_hiv_test_reason_other',
+            field='tb_sputum_sample_result',
+            field_required='tb_sputum_sample_result_other',
         )
+
+        self.required_if(
+            OTHER,
+            field='tb_sputum_sample_no_result',
+            field_required='tb_sputum_sample_no_result_other',
+        )
+
+        self.required_if(
+            OTHER,
+            field='tb_fever_duration',
+            field_required='tb_fever_duration_other',
+        )
+
+        self.required_if(
+            OTHER,
+            field='last_cancer_test',
+            field_required='last_cancer_test_other',
+        )
+
+        return self.cleaned_data

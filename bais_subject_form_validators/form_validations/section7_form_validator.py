@@ -23,3 +23,5 @@ class Section7FormValidator(FormValidator):
 #             field='hiv_and_aids_unborn_baby_transmission',
 #             field_required='hiv_and_aids_unborn_baby_transmission_other',
 #         )
+
+        return self.cleaned_data
