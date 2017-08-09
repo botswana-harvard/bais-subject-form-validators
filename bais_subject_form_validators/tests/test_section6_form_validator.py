@@ -50,18 +50,47 @@ class TestSection6FormValidator(TestCase):
                       form_validator._errors)
         self.assertIn(REQUIRED_ERROR, form_validator._error_codes)
 
-    def test_aids_hiv_not_tested_other2(self):
+    def test_aids_hiv_times_tested(self):
         options = {
-            'aids_hiv_not_tested': 'Value',
-            'aids_hiv_not_tested_other': 'No Access'}
+            'aids_hiv_testing': YES,
+            'aids_hiv_times_tested': None}
         form_validator = Section6FormValidator(cleaned_data=options)
         try:
             form_validator.validate()
         except forms.ValidationError:
             pass
-        self.assertIn('aids_hiv_not_tested_other',
+        self.assertIn('aids_hiv_times_tested',
                       form_validator._errors)
-        self.assertIn(NOT_REQUIRED_ERROR, form_validator._error_codes)
+        self.assertIn(REQUIRED_ERROR, form_validator._error_codes)
+
+    def test_aids_hiv_test_partner(self):
+        options = {
+            'aids_hiv_testing': YES,
+            'aids_hiv_times_tested': 1,
+            'aids_hiv_test_partner': None}
+        form_validator = Section6FormValidator(cleaned_data=options)
+        try:
+            form_validator.validate()
+        except forms.ValidationError:
+            pass
+        self.assertIn('aids_hiv_test_partner',
+                      form_validator._errors)
+        self.assertIn(REQUIRED_ERROR, form_validator._error_codes)
+
+    def test_aids_hiv_test_reason(self):
+        options = {
+            'aids_hiv_testing': YES,
+            'aids_hiv_times_tested': 1,
+            'aids_hiv_test_partner': YES,
+            'aids_hiv_test_reason': None}
+        form_validator = Section6FormValidator(cleaned_data=options)
+        try:
+            form_validator.validate()
+        except forms.ValidationError:
+            pass
+        self.assertIn('aids_hiv_test_reason',
+                      form_validator._errors)
+        self.assertIn(REQUIRED_ERROR, form_validator._error_codes)
 
     def test_current_arv_supplier_other1(self):
         options = {

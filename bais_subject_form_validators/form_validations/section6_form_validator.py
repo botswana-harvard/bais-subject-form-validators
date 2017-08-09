@@ -1,10 +1,20 @@
 from edc_base.modelform_validators import FormValidator
-from edc_constants.constants import OTHER
+from edc_constants.constants import YES, OTHER
 
 
 class Section6FormValidator(FormValidator):
 
     def clean(self):
+
+        req_fields = ['aids_hiv_times_tested',
+                      'aids_hiv_test_partner',
+                      'aids_hiv_test_reason']
+        for req_field in req_fields:
+            self.required_if(
+                YES,
+                field='aids_hiv_testing',
+                field_required=req_field
+            )
 
         self.required_if(
             OTHER,
