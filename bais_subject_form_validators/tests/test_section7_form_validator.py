@@ -37,6 +37,33 @@ class TestSection7FormValidator(TestCase):
                       form_validator._errors)
         self.assertIn(REQUIRED_ERROR, form_validator._error_codes)
 
+    def test_ante_natal_clinic(self):
+        options = {
+            'currently_pregnant': YES,
+            'ante_natal_clinic': None}
+        form_validator = Section7FormValidator(cleaned_data=options)
+        try:
+            form_validator.validate()
+        except forms.ValidationError:
+            pass
+        self.assertIn('ante_natal_clinic',
+                      form_validator._errors)
+        self.assertIn(REQUIRED_ERROR, form_validator._error_codes)
+
+    def test_ante_natal_clinic_none(self):
+        options = {
+            'currently_pregnant': YES,
+            'ante_natal_clinic': YES,
+            'ante_natal_clinic_none': None}
+        form_validator = Section7FormValidator(cleaned_data=options)
+        try:
+            form_validator.validate()
+        except forms.ValidationError:
+            pass
+        self.assertIn('ante_natal_clinic_none',
+                      form_validator._errors)
+        self.assertIn(REQUIRED_ERROR, form_validator._error_codes)
+
     def test_ante_natal_clinic_none_other1(self):
         options = {
             'ante_natal_clinic_none': OTHER,
@@ -63,29 +90,29 @@ class TestSection7FormValidator(TestCase):
                       form_validator._errors)
         self.assertIn(NOT_REQUIRED_ERROR, form_validator._error_codes)
 
-#
-    def test_ante_natal_clinic_test_other1(self):
+    def test_ante_natal_clinic_test(self):
         options = {
-            'ante_natal_clinic_test': OTHER,
-            'ante_natal_clinic_test_other': None}
+            'ante_natal_clinic_test': YES,
+            'ante_natal_clinic_test_result': None}
         form_validator = Section7FormValidator(cleaned_data=options)
         try:
             form_validator.validate()
         except forms.ValidationError:
             pass
-        self.assertIn('ante_natal_clinic_test_other',
+        self.assertIn('ante_natal_clinic_test_result',
                       form_validator._errors)
         self.assertIn(REQUIRED_ERROR, form_validator._error_codes)
 
-    def test_ante_natal_clinic_test_other2(self):
+#
+    def test_ante_natal_clinic_partner_test(self):
         options = {
-            'ante_natal_clinic_test': 'Value',
-            'ante_natal_clinic_test_other': 'confidential'}
+            'ante_natal_clinic_partner_test': YES,
+            'ante_natal_clinic_partner_test_result': None}
         form_validator = Section7FormValidator(cleaned_data=options)
         try:
             form_validator.validate()
         except forms.ValidationError:
             pass
-        self.assertIn('ante_natal_clinic_test_other',
+        self.assertIn('ante_natal_clinic_partner_test_result',
                       form_validator._errors)
-        self.assertIn(NOT_REQUIRED_ERROR, form_validator._error_codes)
+        self.assertIn(REQUIRED_ERROR, form_validator._error_codes)
