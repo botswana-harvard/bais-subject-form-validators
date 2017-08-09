@@ -141,3 +141,29 @@ class TestSection5FormValidator(TestCase):
         self.assertIn('smc_programme_source_other',
                       form_validator._errors)
         self.assertIn(REQUIRED_ERROR, form_validator._error_codes)
+
+    def test_arv_sexual_behaviour_yes(self):
+        options = {
+            'arv_sexual_behaviour': YES,
+            'arv_sexual_behaviour_yes': None}
+        form_validator = Section5FormValidator(cleaned_data=options)
+        try:
+            form_validator.validate()
+        except forms.ValidationError:
+            pass
+        self.assertIn('arv_sexual_behaviour_yes',
+                      form_validator._errors)
+        self.assertIn(REQUIRED_ERROR, form_validator._error_codes)
+
+    def test_arv_sexual_behaviour_yes_other(self):
+        options = {
+            'arv_sexual_behaviour_yes': OTHER,
+            'arv_sexual_behaviour_yes_other': None}
+        form_validator = Section5FormValidator(cleaned_data=options)
+        try:
+            form_validator.validate()
+        except forms.ValidationError:
+            pass
+        self.assertIn('arv_sexual_behaviour_yes_other',
+                      form_validator._errors)
+        self.assertIn(REQUIRED_ERROR, form_validator._error_codes)

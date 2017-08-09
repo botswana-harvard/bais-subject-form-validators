@@ -60,4 +60,16 @@ class Section5FormValidator(FormValidator):
             field_required='smc_programme_source_other'
         )
 
+        self.required_if(
+            YES,
+            field='arv_sexual_behaviour',
+            field_required='arv_sexual_behaviour_yes'
+        )
+
+        self.required_if(
+            OTHER,
+            field='arv_sexual_behaviour_yes',
+            field_required='arv_sexual_behaviour_yes_other'
+        )
+
         return self.cleaned_data
