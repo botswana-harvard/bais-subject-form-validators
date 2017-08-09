@@ -10,6 +10,33 @@ from ..form_validations import Section7FormValidator
 
 class TestSection7FormValidator(TestCase):
 
+    def test_baby_hiv_test_result(self):
+        options = {
+            'baby_hiv_test': YES,
+            'baby_hiv_test_result': None}
+        form_validator = Section7FormValidator(cleaned_data=options)
+        try:
+            form_validator.validate()
+        except forms.ValidationError:
+            pass
+        self.assertIn('baby_hiv_test_result',
+                      form_validator._errors)
+        self.assertIn(REQUIRED_ERROR, form_validator._error_codes)
+
+    def test_baby_arv(self):
+        options = {
+            'baby_hiv_test': YES,
+            'baby_hiv_test_result': 'Positive',
+            'baby_arv': None}
+        form_validator = Section7FormValidator(cleaned_data=options)
+        try:
+            form_validator.validate()
+        except forms.ValidationError:
+            pass
+        self.assertIn('baby_arv',
+                      form_validator._errors)
+        self.assertIn(REQUIRED_ERROR, form_validator._error_codes)
+
     def test_ante_natal_clinic_none_other1(self):
         options = {
             'ante_natal_clinic_none': OTHER,

@@ -18,10 +18,13 @@ class Section7FormValidator(FormValidator):
             field_required='ante_natal_clinic_test_other',
         )
 
-#         self.required_if(
-#             OTHER,
-#             field='hiv_and_aids_unborn_baby_transmission',
-#             field_required='hiv_and_aids_unborn_baby_transmission_other',
-#         )
+        req_fields = ['baby_hiv_test_result',
+                      'baby_arv']
+        for req_field in req_fields:
+            self.required_if(
+                YES,
+                field='baby_hiv_test',
+                field_required=req_field
+            )
 
         return self.cleaned_data

@@ -35,6 +35,17 @@ class Section6FormValidator(FormValidator):
             field_required='current_arv_supplier_other',
         )
 
+        req_fields = ['aids_hiv_times_tested',
+                      'aids_hiv_test_partner',
+                      'aids_hiv_test_reason',
+                      'aids_hiv_not_tested']
+        for req_field in req_fields:
+            self.required_if(
+                YES,
+                field='aids_hiv_testing',
+                field_required=req_field
+            )
+
         self.required_if(
             OTHER,
             field='not_on_arv_therapy',
