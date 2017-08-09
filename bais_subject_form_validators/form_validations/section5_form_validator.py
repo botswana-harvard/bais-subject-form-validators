@@ -6,6 +6,15 @@ class Section5FormValidator(FormValidator):
 
     def clean(self):
 
+        req_fields = ['tb_recent_information',
+                      'tb_information_source']
+        for req_field in req_fields:
+            self.required_if(
+                YES,
+                field='tb_awareness',
+                field_required=req_field
+            )
+
         self.required_if(
             OTHER,
             field='tb_information_source',
