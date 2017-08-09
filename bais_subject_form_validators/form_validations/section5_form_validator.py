@@ -34,9 +34,30 @@ class Section5FormValidator(FormValidator):
         )
 
         self.required_if(
+            YES,
+            field='tb_curable',
+            field_required='tb_cure',
+        )
+
+        self.required_if(
             OTHER,
             field='hiv_and_aids_newborn_baby_transmission',
             field_required='hiv_and_aids_newborn_baby_transmission_other',
+        )
+
+        req_fields = ['smc_programme_awareness',
+                      'smc_programme_source']
+        for req_field in req_fields:
+            self.required_if(
+                YES,
+                field='smc_programme',
+                field_required=req_field
+            )
+
+        self.required_if(
+            OTHER,
+            field='smc_programme_source',
+            field_required='smc_programme_source_other'
         )
 
         return self.cleaned_data
