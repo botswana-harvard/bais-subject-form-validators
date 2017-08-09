@@ -8,7 +8,8 @@ class Section6FormValidator(FormValidator):
 
         req_fields = ['aids_hiv_times_tested',
                       'aids_hiv_test_partner',
-                      'aids_hiv_test_reason']
+                      'aids_hiv_test_reason',
+                      'aids_hiv_not_tested']
         for req_field in req_fields:
             self.required_if(
                 YES,

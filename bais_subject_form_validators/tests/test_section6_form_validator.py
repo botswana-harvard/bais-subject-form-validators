@@ -92,6 +92,22 @@ class TestSection6FormValidator(TestCase):
                       form_validator._errors)
         self.assertIn(REQUIRED_ERROR, form_validator._error_codes)
 
+    def test_aids_hiv_not_tested(self):
+        options = {
+            'aids_hiv_testing': YES,
+            'aids_hiv_times_tested': 1,
+            'aids_hiv_test_partner': YES,
+            'aids_hiv_test_reason': ' ILLNESS',
+            'aids_hiv_not_tested': None}
+        form_validator = Section6FormValidator(cleaned_data=options)
+        try:
+            form_validator.validate()
+        except forms.ValidationError:
+            pass
+        self.assertIn('aids_hiv_not_tested',
+                      form_validator._errors)
+        self.assertIn(REQUIRED_ERROR, form_validator._error_codes)
+
     def test_current_arv_supplier_other1(self):
         options = {
             'current_arv_supplier': OTHER,
