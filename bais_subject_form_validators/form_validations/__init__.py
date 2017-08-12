@@ -1,10 +1,17 @@
-from .section1_form_validator import Section1FormValidator
-from .section2_form_validator import Section2FormValidator
-from .section3_form_validator import Section3FormValidator
-from .section4_form_validator import Section4FormValidator
-from .section5_form_validator import Section5FormValidator
-from .section6_form_validator import Section6FormValidator
-from .section7_form_validator import Section7FormValidator
-from .section8_form_validator import Section8FormValidator
+from .alcohol_consumption_and_substance_use_form_validator import (
+    AlcoholConsumptionAndSubstanceUseFormValidator)
+from .attitudes_towards_people_form_validator import (
+    AttitudesTowardsPeopleFormValidator)
+from .background_characteristics_form_validator import (
+    BackgroundCharacteristicsFormValidator)
+from .childbearing_and_antenatal_care_form_validator import (
+    ChildbearingAndAntenatalCareFormValidator)
 from .household_questionnaire_form_validator import (
     HouseholdQuestionnaireFormValidator)
+from .knowledge_about_hiv_and_aids_and_tb_form_validator import (
+    KnowledgeAboutHivAndAidsAndTbFormValidator)
+from .male_circumcision_and_sexually_transmitted_infections_form_validator import (
+    MaleCircumcissionAndSexuallyTransmittedInfectionsFormValidator)
+from .sexual_history_and_behaviour_form_validator import (
+    SexualHistoryAndBehaviourFormValidator)
+from .tb_screening_form_validator import TBScreeningFormValidator
