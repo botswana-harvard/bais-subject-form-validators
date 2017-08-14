@@ -1,5 +1,5 @@
 from edc_base.modelform_validators import FormValidator
-from edc_constants.constants import OTHER, YES
+from edc_constants.constants import OTHER, YES, NO
 
 
 class ChildbearingAndAntenatalCareFormValidator(FormValidator):
@@ -15,8 +15,8 @@ class ChildbearingAndAntenatalCareFormValidator(FormValidator):
         req_fields = ['baby_hiv_test_result',
                       'baby_arv']
         for req_field in req_fields:
-            self.required_if(
-                YES,
+            self.not_required_if(
+                NO,
                 field='baby_hiv_test',
                 field_required=req_field
             )
