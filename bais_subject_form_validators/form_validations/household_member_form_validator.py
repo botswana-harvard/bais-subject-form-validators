@@ -10,44 +10,20 @@ class HouseholdQuestionnaireFormValidator(FormValidator):
 
         self.required_if(
             OTHER,
-            field='person_citizenship',
-            field_required='person_citizenship_other',
-        )
-
-        self.required_if(
-            YES,
-            field='person_biological_mother_alive',
-            field_required='person_biological_mother_household',
-        )
-
-        self.required_if(
-            YES,
-            field='person_biological_father_alive',
-            field_required='person_biological_father_household',
-        )
-
-        self.not_required_if(
-            NO,
-            field='person_attended_school',
-            field_required='person_currently_studying',
-        )
-
-        self.not_required_if(
-            YES_LEFT,
-            field='person_attended_school',
-            field_required='person_currently_studying',
-        )
-
-        self.required_if(
-            YES,
-            field='person_work_unpaid',
-            field_required='person_work_unpaid_reason',
+            field='household_help_received',
+            field_required='household_help_received_other',
         )
 
         self.required_if(
             OTHER,
-            field='person_work_unpaid_reason',
-            field_required='person_work_unpaid_reason_other',
+            field='household_help_received_from',
+            field_required='household_help_received_from_other',
+        )
+
+        self.required_if(
+            OTHER,
+            field='household_illness_help',
+            field_required='household_illness_help_other',
         )
 
         return self.cleaned_data
