@@ -8,11 +8,20 @@ class HouseholdQuestionnaireFormValidator(FormValidator):
 
     def clean(self):
 
-        self.not_required_if(
-            NO,
-            field='household_help',
-            field_required='household_help_received',
-        )
+        req_fields = [
+            'household_help_received',
+            'household_help_received_from',
+            'household_illness',
+            'household_illness_support',
+            'household_illness_help',
+            'household_help_provider',
+            'household_help_review', ]
+        for req_field in req_fields:
+            self.not_required_if(
+                NO,
+                field='household_help',
+                field_required=req_field,
+            )
 
         self.required_if(
             OTHER,
