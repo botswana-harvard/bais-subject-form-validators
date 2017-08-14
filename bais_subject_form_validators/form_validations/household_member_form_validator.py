@@ -48,12 +48,6 @@ class HouseholdMemberFormValidator(FormValidator):
 
         self.required_if(
             OTHER,
-            field='household_help_received_from',
-            field_required='household_help_received_from_other',
-        )
-
-        self.required_if(
-            OTHER,
             field='household_illness_help',
             field_required='household_illness_help_other',
         )
