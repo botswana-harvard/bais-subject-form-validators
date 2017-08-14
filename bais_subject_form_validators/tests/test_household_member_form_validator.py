@@ -317,3 +317,17 @@ class TestHouseholdMemberFormValidator(TestCase):
         self.assertIn('household_illness_help_other',
                       form_validator._errors)
         self.assertIn(REQUIRED_ERROR, form_validator._error_codes)
+
+    def test_household_deaths_review(self):
+        options = {
+            'household_deaths': NO,
+            'household_deaths_review': 2}
+        form_validator = HouseholdMemberFormValidator(
+            cleaned_data=options)
+        try:
+            form_validator.validate()
+        except forms.ValidationError:
+            pass
+        self.assertIn('household_deaths_review',
+                      form_validator._errors)
+        self.assertIn(NOT_REQUIRED_ERROR, form_validator._error_codes)
