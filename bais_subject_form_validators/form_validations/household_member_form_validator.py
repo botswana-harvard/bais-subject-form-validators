@@ -4,9 +4,26 @@ from edc_constants.constants import OTHER, YES, NO
 from ..constants import YES_LEFT
 
 
-class HouseholdQuestionnaireFormValidator(FormValidator):
+class HouseholdMemberFormValidator(FormValidator):
 
     def clean(self):
+
+        req_fields = [
+            'member_age',
+            'household_help',
+            'household_help_received',
+            'household_help_received_from',
+            'household_illness',
+            'household_illness_support',
+            'household_illness_help',
+            'household_help_provider',
+            'household_help_review', ]
+        for req_field in req_fields:
+            self.not_required_if(
+                NO,
+                field='bedridden_member',
+                field_required=req_field,
+            )
 
         req_fields = [
             'household_help_received',
