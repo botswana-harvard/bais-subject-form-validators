@@ -70,3 +70,103 @@ class TestHouseholdMemberFormValidator(TestCase):
         self.assertIn('household_help_received_from',
                       form_validator._errors)
         self.assertIn(NOT_REQUIRED_ERROR, form_validator._error_codes)
+
+    def test_household_illness(self):
+        options = {
+            'bedridden_member': NO,
+            'member_age': None,
+            'household_help': None,
+            'household_help_received': None,
+            'household_help_received_from': None,
+            'household_illness': 'Yes'}
+        form_validator = HouseholdMemberFormValidator(
+            cleaned_data=options)
+        try:
+            form_validator.validate()
+        except forms.ValidationError:
+            pass
+        self.assertIn('household_illness',
+                      form_validator._errors)
+        self.assertIn(NOT_REQUIRED_ERROR, form_validator._error_codes)
+
+    def test_household_illness_support(self):
+        options = {
+            'bedridden_member': NO,
+            'member_age': None,
+            'household_help': None,
+            'household_help_received': None,
+            'household_help_received_from': None,
+            'household_illness': None,
+            'household_illness_support': 'Yes'}
+        form_validator = HouseholdMemberFormValidator(
+            cleaned_data=options)
+        try:
+            form_validator.validate()
+        except forms.ValidationError:
+            pass
+        self.assertIn('household_illness_support',
+                      form_validator._errors)
+        self.assertIn(NOT_REQUIRED_ERROR, form_validator._error_codes)
+
+    def test_household_illness_help(self):
+        options = {
+            'bedridden_member': NO,
+            'member_age': None,
+            'household_help': None,
+            'household_help_received': None,
+            'household_help_received_from': None,
+            'household_illness': None,
+            'household_illness_support': None,
+            'household_illness_help': 'Money'}
+        form_validator = HouseholdMemberFormValidator(
+            cleaned_data=options)
+        try:
+            form_validator.validate()
+        except forms.ValidationError:
+            pass
+        self.assertIn('household_illness_help',
+                      form_validator._errors)
+        self.assertIn(NOT_REQUIRED_ERROR, form_validator._error_codes)
+
+    def test_household_help_provider(self):
+        options = {
+            'bedridden_member': NO,
+            'member_age': None,
+            'household_help': None,
+            'household_help_received': None,
+            'household_help_received_from': None,
+            'household_illness': None,
+            'household_illness_support': None,
+            'household_illness_help': None,
+            'household_help_provider': 'Relatives'}
+        form_validator = HouseholdMemberFormValidator(
+            cleaned_data=options)
+        try:
+            form_validator.validate()
+        except forms.ValidationError:
+            pass
+        self.assertIn('household_help_provider',
+                      form_validator._errors)
+        self.assertIn(NOT_REQUIRED_ERROR, form_validator._error_codes)
+
+    def test_household_help_review(self):
+        options = {
+            'bedridden_member': NO,
+            'member_age': None,
+            'household_help': None,
+            'household_help_received': None,
+            'household_help_received_from': None,
+            'household_illness': None,
+            'household_illness_support': None,
+            'household_illness_help': None,
+            'household_help_provider': None,
+            'household_help_review': 'No'}
+        form_validator = HouseholdMemberFormValidator(
+            cleaned_data=options)
+        try:
+            form_validator.validate()
+        except forms.ValidationError:
+            pass
+        self.assertIn('household_help_review',
+                      form_validator._errors)
+        self.assertIn(NOT_REQUIRED_ERROR, form_validator._error_codes)
