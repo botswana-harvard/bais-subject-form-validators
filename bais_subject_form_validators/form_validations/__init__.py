@@ -15,3 +15,4 @@ from .male_circumcision_and_sexually_transmitted_infections_form_validator impor
 from .sexual_history_and_behaviour_form_validator import (
     SexualHistoryAndBehaviourFormValidator)
 from .tb_screening_form_validator import TBScreeningFormValidator
+from .household_member_form_validator import HouseholdMemberFormValidator
